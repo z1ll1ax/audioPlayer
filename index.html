@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/imgs/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Audio Player</title>
+</head>
+<body>
+    <main>
+        <div class="wrapper">
+            <div class="player">
+                <img class="player-pic" src="assets/imgs/lemonade.png">
+                <div class="container">
+                    <audio controls class="audio-player">
+                        <source src="dontstartnow.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="controls">
+                        <input class="player-song-time" type="range">
+                        <div class="player-titles">
+                            <h2>Title</h2>
+                            <h4>Author</h4>
+                        </div>
+                        <div class="controls-buttons">
+                            <button class="shuffle">
+                                <img src="assets/imgs/shuffle.svg" alt="shuffle">
+                            </button>
+                            <button class="scroll-left">
+                                <img src="assets/imgs/backward.png" alt="previous-song">
+                            </button>
+                            <button class="play-pause">
+                                <img src="assets/imgs/play.png" alt="play/pause">
+                            </button>
+                            <button class="scroll-right">
+                                <img src="assets/imgs/forward.png" alt="next-song">
+                            </button>
+                            <button class="replay">
+                                <img src="assets/imgs/repeat.svg" alt="shuffle">
+                            </button>
+                        </div>
+                        <div class="controls-sound">
+                            <button class="volume">
+                                <img src="assets/imgs/Speaker_Icon.svg" alt="volume-icon">
+                            </button>
+                            <input class="player-song-volume" type="range">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <img src="assets/imgs/discord-icon.png" alt="discord-icon">
+        <img src="assets/imgs/telegram-icon.png" alt="telegram-icon">
+        <h2>@z1ll1ax</h2>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>

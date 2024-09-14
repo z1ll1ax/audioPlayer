@@ -1,0 +1,115 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, 
+    var(--color-pink), var(--color-khaki), crimson);
+}
+:root{
+    --color-gray: #50514F;
+    --color--light-gray: #CBD4C2;
+    --color-white: #FFFCFF;
+    --color-blue: #247BA0;
+    --color-khaki: #C3B299;
+    --color-pink: #DDA0DD;
+}
+.wrapper{
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+.player{
+    border: solid 0.15rem black;
+    background: linear-gradient(20deg, var(--color-khaki), var(--color-blue));
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 24rem;
+    height: 85vh;
+}
+.player-pic{
+    margin-top: 5vh;
+    border: solid 0.15rem black;
+    width: 80%;
+    border-radius: 2rem;
+}
+.container{
+    width: 90%;
+    margin-top: 1rem;
+}
+.audio-player{
+    display: none;
+}
+.controls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.player-song-time{
+    width: 90%;
+}
+.player-titles{
+    margin-top: 0.5rem;
+}
+.player-titles h2, .player-titles h4{
+    margin: 0;
+}
+.controls-buttons{
+    width: 90%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+button{
+    background-color: transparent;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    transition: opacity 0.15s;
+}
+button img{
+    width: 100%;
+}
+button:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.scroll-left, .play-pause, .scroll-right{
+    width: 4rem;
+    height: 4rem;
+}
+.volume{
+    width: 3rem;
+    height: 3rem;
+}
+.no-volume{
+    position: absolute;
+    width: 2rem;
+    margin-top: 1rem;
+    border: red solid 0.1rem;
+    height: 0;
+    transform: rotate(45deg);
+}
+.controls-sound{
+    width: 90%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+footer{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+footer img{
+    width: 2rem;
+}
+footer h2{
+    margin: 0;
+}
