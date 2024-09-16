@@ -25,7 +25,7 @@ body{
     align-items: center;
     margin: 0 auto;
     width: 24rem;
-    height: 85vh;
+    height: auto;
 }
 .player-pic{
     margin-top: 5vh;
@@ -52,7 +52,9 @@ body{
     margin-top: 0.5rem;
 }
 .player-titles h2, .player-titles h4{
-    margin: 0;
+    margin: 0.1rem;
+    font-weight: 100;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
 }
 .controls-buttons{
     width: 90%;
@@ -94,7 +96,7 @@ button:hover{
 }
 .controls-sound{
     width: 90%;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -105,11 +107,14 @@ footer{
     bottom: 1rem;
     right: 1rem;
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 footer img{
     width: 2rem;
 }
 footer h2{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
