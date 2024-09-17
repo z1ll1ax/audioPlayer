@@ -11,13 +11,17 @@
     <main>
         <div class="wrapper">
             <div class="player">
-                <img class="player-pic" src="assets/imgs/lemonade.png">
+                <img class="player-pic" src="assets/imgs/empty-card.png">
                 <div class="container">
                     <audio controls class="audio-player">
-                        <source src="dontstartnow.mp3" type="audio/mpeg">
+                        <source src="assets/music/beyonce.mp3">
                     </audio>
                     <div class="controls">
-                        <input class="player-song-time" type="range">
+                        <div class="audio-track-container">
+                            <h3 class="left-timing">00:00</h3>
+                            <input class="player-song-time" type="range" min="0" max="1" value="0" step="0.001">
+                            <h3 class="right-timing">00:00</h3>
+                        </div>
                         <div class="player-titles">
                             <h2 class="player-title">Title</h2>
                             <h4 class="player-author">Author</h4>

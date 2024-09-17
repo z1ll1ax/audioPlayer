@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Don't Hurt Yourself",
+        "author": "Beyonce",
+        "song": "assets/imgs/beyonce.mp3",
+        "img": "assets/imgs/lemonade.png"
+    },
+    {
+        "title": "Don't Start Now",
+        "author": "Dua Lipa",
+        "song": "assets/imgs/dontstartnow.mp3",
+        "img": "assets/imgs/dontstartnow.png"
+    }
+    ,
+    {
+        "title": "Don't Start Now 2",
+        "author": "Dua Lipa 2",
+        "song": "assets/imgs/dontstartnow.mp3",
+        "img": "assets/imgs/dontstartnow.png"
+    }
+]
