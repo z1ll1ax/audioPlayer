@@ -59,6 +59,7 @@ body{
     margin-top: 0.5rem;
 }
 .player-titles h2, .player-titles h4, h3{
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -86,7 +87,7 @@ button{
 button img{
     width: 100%;
 }
-button:hover{
+button:hover, input:hover{
     cursor: pointer;
     opacity: 0.7;
 }
@@ -120,12 +121,19 @@ footer{
     right: 1rem;
     display: flex;
     align-items: center;
+    gap: 3rem;
+}
+.footer-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     gap: 1rem;
+    text-decoration: none;
 }
 footer img{
     width: 2rem;
 }
-footer h2{
+footer h3{
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;

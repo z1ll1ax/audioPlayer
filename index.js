@@ -50,7 +50,10 @@ audioPlayer.addEventListener('timeupdate', function() {
     const mins = Math.floor(audioPlayer.currentTime / 60);
     const secs = Math.floor(audioPlayer.currentTime % 60);
     leftTiming.textContent = `${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
-    audioTrack.value = audioPlayer.currentTime / audioPlayer.duration;
+    let duration;
+    if (isNaN(audioPlayer.duration)) duration = 1;
+    else duration = audioPlayer.duration;
+    audioTrack.value = audioPlayer.currentTime / duration;
 });
 //TODO: fix scrolling audiotrack bug
 document.addEventListener("DOMContentLoaded", function(){
@@ -61,7 +64,6 @@ function init() {
     RenderTrackParams();
 }
 function RenderTrackParams(){
-    console.log(currentTrack);
     titleLabel.textContent = tracks[currentTrack].title;
     authorLabel.textContent = tracks[currentTrack].author;
     songCover.src = tracks[currentTrack].img;
@@ -69,26 +71,30 @@ function RenderTrackParams(){
     volumeInput.value = 0;
     const mins = Math.floor(audioPlayer.duration / 60);
     const secs = Math.floor(audioPlayer.duration % 60);
-    console.log(mins, secs);
     rightTiming.textContent = `${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
 }
 function Play() {
     if (isPaused){
-        audioPlayer.play();
-        isPaused = false;
-        let img = playButton.querySelector('img');
-        img.src = 'assets/imgs/pause.png';
+        PlayButtonOn();
     } 
     else {
-        audioPlayer.pause();
-        isPaused = true;
-        let img = playButton.querySelector('img');
-        img.src = 'assets/imgs/play.png';
+        PlayButtonOff();
     }
+}
+function PlayButtonOn(){
+    let img = playButton.querySelector('img');
+    audioPlayer.play();
+    isPaused = false;
+    img.src = 'assets/imgs/pause.png';
+}
+function PlayButtonOff(){
+    let img = playButton.querySelector('img');
+    audioPlayer.pause();
+    isPaused = true;
+    img.src = 'assets/imgs/play.png';
 }
 function ScrollLeft(){
     if(!tracksLoaded) return;
-    audioPlayer.pause();
     currentTrack -= 1;
     if (currentTrack === -1){
         currentTrack = tracks.length - 1;
@@ -96,11 +102,10 @@ function ScrollLeft(){
     RenderTrackParams();
     audioPlayer.load();
     volumeInput.value = 0;
-    Play();
+    PlayButtonOn();
 }
 function ScrollRight(){
     if(!tracksLoaded) return;
-    audioPlayer.pause();
     currentTrack += 1;
     if (currentTrack === tracks.length){
         currentTrack = 0;
@@ -108,7 +113,7 @@ function ScrollRight(){
     RenderTrackParams();
     audioPlayer.load();
     volumeInput.value = 0;
-    Play();
+    PlayButtonOn();
 }
 function MuteVolume(){}
 function Shuffle(){}
