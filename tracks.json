@@ -2,20 +2,26 @@
     {
         "title": "Don't Hurt Yourself",
         "author": "Beyonce",
-        "song": "assets/imgs/beyonce.mp3",
+        "song": "assets/music/beyonce.mp3",
         "img": "assets/imgs/lemonade.png"
     },
     {
         "title": "Don't Start Now",
         "author": "Dua Lipa",
-        "song": "assets/imgs/dontstartnow.mp3",
+        "song": "assets/music/dontstartnow.mp3",
         "img": "assets/imgs/dontstartnow.png"
     }
     ,
     {
-        "title": "Don't Start Now 2",
-        "author": "Dua Lipa 2",
-        "song": "assets/imgs/dontstartnow.mp3",
-        "img": "assets/imgs/dontstartnow.png"
+        "title": "Дымок",
+        "author": "Ицык Цыпер & Игорь Цыба",
+        "song": "assets/music/dymok.mp3",
+        "img": "assets/imgs/dymok.jpeg"
+    },
+    {
+        "title": "Погоня",
+        "author": "Смешарики",
+        "song": "assets/music/smeshariki.mp3",
+        "img": "assets/imgs/smeshariki.jpeg"
     }
 ]

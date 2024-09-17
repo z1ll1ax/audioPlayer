@@ -18,7 +18,7 @@ const rightTiming = document.querySelector('.right-timing');
 
 let tracks = [];
 let tracksLoaded = false;
-
+let currentTrack = 0;
 let isPaused = true;
 let isMuted = false;
 
@@ -58,12 +58,18 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function init() {
-    audioPlayerSource.src = tracks[0].song;
-    titleLabel.textContent = tracks[0].title;
-    authorLabel.textContent = tracks[0].author;
-    songCover.src = tracks[0].img;
+    RenderTrackParams();
+}
+function RenderTrackParams(){
+    console.log(currentTrack);
+    titleLabel.textContent = tracks[currentTrack].title;
+    authorLabel.textContent = tracks[currentTrack].author;
+    songCover.src = tracks[currentTrack].img;
+    audioPlayerSource.src = tracks[currentTrack].song;
+    volumeInput.value = 0;
     const mins = Math.floor(audioPlayer.duration / 60);
     const secs = Math.floor(audioPlayer.duration % 60);
+    console.log(mins, secs);
     rightTiming.textContent = `${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
 }
 function Play() {
@@ -78,13 +84,31 @@ function Play() {
         isPaused = true;
         let img = playButton.querySelector('img');
         img.src = 'assets/imgs/play.png';
-    } 
+    }
 }
 function ScrollLeft(){
-    console.log(tracks);
+    if(!tracksLoaded) return;
+    audioPlayer.pause();
+    currentTrack -= 1;
+    if (currentTrack === -1){
+        currentTrack = tracks.length - 1;
+    }
+    RenderTrackParams();
+    audioPlayer.load();
+    volumeInput.value = 0;
+    Play();
 }
 function ScrollRight(){
-    console.log(tracks);
+    if(!tracksLoaded) return;
+    audioPlayer.pause();
+    currentTrack += 1;
+    if (currentTrack === tracks.length){
+        currentTrack = 0;
+    }
+    RenderTrackParams();
+    audioPlayer.load();
+    volumeInput.value = 0;
+    Play();
 }
 function MuteVolume(){}
 function Shuffle(){}
