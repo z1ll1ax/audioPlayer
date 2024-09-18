@@ -34,20 +34,21 @@
                                 <img src="assets/imgs/backward.png" alt="previous-song">
                             </button>
                             <button class="play-pause">
-                                <img src="assets/imgs/play.png" alt="play/pause">
+                                <img src="assets/imgs/playfullwhite.png" alt="play/pause">
                             </button>
                             <button class="scroll-right">
                                 <img src="assets/imgs/forward.png" alt="next-song">
                             </button>
                             <button class="replay">
-                                <img src="assets/imgs/repeat.svg" alt="shuffle">
+                                <img src="assets/imgs/repeat.png" alt="shuffle">
                             </button>
                         </div>
                         <div class="controls-sound">
                             <button class="volume">
                                 <img src="assets/imgs/Speaker_Icon.png" alt="volume-icon">
                             </button>
-                            <input class="player-song-volume" type="range">
+                            <input class="player-song-volume" type="range" min="0" max="1" step="0.01" value="0.5">
+                            <h3 class="sound-volume">50</h3>
                         </div>
                     </div>
                 </div>
@@ -55,18 +56,21 @@
         </div>
     </main>
     <footer>
+        <a class="footer-container" href="https://rs.school/" target="_blank">
+            <img src="assets/imgs/rss-logo.svg" alt="rss-logo">
+            <h4>2024</h4>
+        </a>
         <a class="footer-container" target="_blank" href="https://discordapp.com/users/31ll1ax/">
             <img src="assets/imgs/discord-icon.png" alt="discord-icon">
-            <h3>@31ll1ax</h3>
+            <h4>@31ll1ax</h4>
         </a>
         <a class="footer-container" target="_blank" href="https://t.me/z1ll1ax/">
             <img src="assets/imgs/telegram-icon.png" alt="telegram-icon">
-            <img src="assets/imgs/github.svg" alt="telegram-icon">
-            <h3>@z1ll1ax</h3>
+            <h4>@z1ll1ax</h4>
         </a>
-        <a class="footer-container" href="https://rs.school/" target="_blank">
-            <img src="assets/imgs/rss-logo.svg" alt="rss-logo">
-            <h3>2024</h3>
+        <a class="footer-container" target="_blank" href="https://github.com/z1ll1ax">
+            <img src="assets/imgs/github.svg" alt="telegram-icon">
+            <h4>@z1ll1ax</h4>
         </a>
     </footer>
     <script src="index.js"></script>

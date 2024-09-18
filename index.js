@@ -14,14 +14,15 @@ const audioPlayer = document.querySelector('.audio-player');
 const audioPlayerSource = audioPlayer.querySelector('source');
 const leftTiming = document.querySelector('.left-timing'); 
 const rightTiming = document.querySelector('.right-timing'); 
-
+const volumeLabel = document.querySelector('.sound-volume'); 
 
 let tracks = [];
 let tracksLoaded = false;
 let currentTrack = 0;
 let isPaused = true;
 let isMuted = false;
-
+let isRepeating = false;
+audioPlayer.volume = volumeInput.value;
 
 async function fetchTracks() {
   try {
@@ -42,10 +43,11 @@ shuffleButton.addEventListener('click', () => Shuffle() );
 leftScrollButton.addEventListener('click', () => ScrollLeft() );
 rightScrollButton.addEventListener('click', () => ScrollRight() );
 repeatButton.addEventListener('click', () => Repeat() );
+muteButton.addEventListener('click', () => MuteVolume() );
 
 audioTrack.addEventListener('click', function(){
     audioPlayer.currentTime = audioTrack.value * audioPlayer.duration;
- });
+});
 audioPlayer.addEventListener('timeupdate', function() {
     const mins = Math.floor(audioPlayer.currentTime / 60);
     const secs = Math.floor(audioPlayer.currentTime % 60);
@@ -55,6 +57,19 @@ audioPlayer.addEventListener('timeupdate', function() {
     else duration = audioPlayer.duration;
     audioTrack.value = audioPlayer.currentTime / duration;
 });
+audioPlayer.addEventListener('ended', function() {
+    if (isRepeating) {
+        audioPlayer.value = 0;
+        audioPlayer.play();
+    }
+    else ScrollRight();
+});
+
+volumeInput.addEventListener('input', () => {
+    if (!isMuted) audioPlayer.volume = volumeInput.value;
+    else audioPlayer.volume = 0;
+    volumeLabel.textContent = parseInt(volumeInput.value * 100);
+});
 //TODO: fix scrolling audiotrack bug
 document.addEventListener("DOMContentLoaded", function(){
     fetchTracks();
@@ -63,16 +78,20 @@ document.addEventListener("DOMContentLoaded", function(){
 function init() {
     RenderTrackParams();
 }
+
 function RenderTrackParams(){
+    audioPlayerSource.src = tracks[currentTrack].song;
+    audioPlayer.load();
+}
+audioPlayer.addEventListener('loadedmetadata', function() {
     titleLabel.textContent = tracks[currentTrack].title;
     authorLabel.textContent = tracks[currentTrack].author;
     songCover.src = tracks[currentTrack].img;
-    audioPlayerSource.src = tracks[currentTrack].song;
-    volumeInput.value = 0;
+    audioTrack.value = 0;
     const mins = Math.floor(audioPlayer.duration / 60);
     const secs = Math.floor(audioPlayer.duration % 60);
     rightTiming.textContent = `${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
-}
+});
 function Play() {
     if (isPaused){
         PlayButtonOn();
@@ -85,37 +104,53 @@ function PlayButtonOn(){
     let img = playButton.querySelector('img');
     audioPlayer.play();
     isPaused = false;
-    img.src = 'assets/imgs/pause.png';
+    img.src = 'assets/imgs/pausefullwhite.png';
 }
 function PlayButtonOff(){
     let img = playButton.querySelector('img');
     audioPlayer.pause();
     isPaused = true;
-    img.src = 'assets/imgs/play.png';
+    img.src = 'assets/imgs/playfullwhite.png';
 }
 function ScrollLeft(){
     if(!tracksLoaded) return;
-    currentTrack -= 1;
+    currentTrack--;
     if (currentTrack === -1){
         currentTrack = tracks.length - 1;
     }
     RenderTrackParams();
-    audioPlayer.load();
-    volumeInput.value = 0;
     PlayButtonOn();
 }
 function ScrollRight(){
     if(!tracksLoaded) return;
-    currentTrack += 1;
+    currentTrack++;
     if (currentTrack === tracks.length){
         currentTrack = 0;
     }
     RenderTrackParams();
-    audioPlayer.load();
-    volumeInput.value = 0;
     PlayButtonOn();
 }
-function MuteVolume(){}
+function MuteVolume(){
+    isMuted = !isMuted;
+    let img = muteButton.querySelector('img');
+    if (isMuted){
+        img.src = 'assets/imgs/disabled-volume-icon.svg';
+        audioPlayer.volume = 0;
+    }
+    else {
+        img.src = "assets/imgs/Speaker_Icon.png";
+        audioPlayer.volume = volumeInput.value;
+    }
+}
 function Shuffle(){}
-function Repeat(){}
+function Repeat(){
+    isRepeating = !isRepeating;
+    let img = repeatButton.querySelector('img');
+    if (isRepeating){
+        img.src = 'assets/imgs/repeatActive.png';
+    }
+    else {
+        img.src = "assets/imgs/repeat.png";
+    }
+}
 
