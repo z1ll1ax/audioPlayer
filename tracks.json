@@ -22,5 +22,11 @@
         "author": "Смешарики",
         "song": "assets/music/smeshariki.mp3",
         "img": "assets/imgs/smeshariki.jpeg"
+    },
+    {
+        "title": "Царица",
+        "author": "ANNA ASTI",
+        "song": "assets/music/tsaritsa.mp3",
+        "img": "assets/imgs/tsaritsa.jpg"
     }
 ]

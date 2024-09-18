@@ -1,4 +1,4 @@
-//TODO: write my mark in console
+console.log('60/60');
 const titleLabel = document.querySelector('.player-title');
 const authorLabel = document.querySelector('.player-author');
 const songCover = document.querySelector('.player-pic');
@@ -26,7 +26,7 @@ audioPlayer.volume = volumeInput.value;
 
 async function fetchTracks() {
   try {
-    const response = await fetch('./tracks.json'); // Adjust the path as needed
+    const response = await fetch('./tracks.json');
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.statusText);
     }
@@ -45,7 +45,7 @@ rightScrollButton.addEventListener('click', () => ScrollRight() );
 repeatButton.addEventListener('click', () => Repeat() );
 muteButton.addEventListener('click', () => MuteVolume() );
 
-audioTrack.addEventListener('click', function(){
+audioTrack.addEventListener('input', function(){
     audioPlayer.currentTime = audioTrack.value * audioPlayer.duration;
 });
 audioPlayer.addEventListener('timeupdate', function() {
@@ -70,7 +70,6 @@ volumeInput.addEventListener('input', () => {
     else audioPlayer.volume = 0;
     volumeLabel.textContent = parseInt(volumeInput.value * 100);
 });
-//TODO: fix scrolling audiotrack bug
 document.addEventListener("DOMContentLoaded", function(){
     fetchTracks();
 });
@@ -84,6 +83,7 @@ function RenderTrackParams(){
     audioPlayer.load();
 }
 audioPlayer.addEventListener('loadedmetadata', function() {
+    if (tracks.length === 0) return;
     titleLabel.textContent = tracks[currentTrack].title;
     authorLabel.textContent = tracks[currentTrack].author;
     songCover.src = tracks[currentTrack].img;
@@ -134,7 +134,7 @@ function MuteVolume(){
     isMuted = !isMuted;
     let img = muteButton.querySelector('img');
     if (isMuted){
-        img.src = 'assets/imgs/disabled-volume-icon.svg';
+        img.src = 'assets/imgs/Speaker_Icon_disabled.png';
         audioPlayer.volume = 0;
     }
     else {
@@ -142,7 +142,17 @@ function MuteVolume(){
         audioPlayer.volume = volumeInput.value;
     }
 }
-function Shuffle(){}
+function Shuffle(){
+    let temp = [];
+    while (tracks.length > 0){
+        let r = Math.floor(Math.random() * tracks.length);
+        temp.push(tracks[r]);
+        tracks.splice(r, 1);
+    }
+    tracks = temp;
+    RenderTrackParams();
+    audioPlayer.play();
+}
 function Repeat(){
     isRepeating = !isRepeating;
     let img = repeatButton.querySelector('img');

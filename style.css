@@ -2,25 +2,23 @@ body{
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(120deg, 
-    var(--color-pink), var(--color-khaki), crimson);
+    background: radial-gradient(var(--color-1), var(--color-2), var(--color-3));
 }
 :root{
-    --color-gray: #50514F;
-    --color--light-gray: #CBD4C2;
-    --color-white: #FFFCFF;
-    --color-blue: #00B4D8;
-    --color-khaki: #C3B299;
-    --color-orange: #ee9b00;
-    --color-pink: #DDA0DD;
+    --color-1: #edf2f4;
+    --color-2: #8d99ae;
+    --color-3: #2b2d42;
+    --color-4: #ef233c;
+    --color-5: #d90429;
+    --color-white: white;
 }
 .wrapper{
     margin-top: 5vh;
     margin-bottom: 10vh;
 }
 .player{
-    border: solid 0.15rem white;
-    background: linear-gradient(10deg, var(--color-orange), var(--color-blue));
+    border: solid 0.15rem var(--color-white);
+    background: linear-gradient(10deg, var(--color-5), var(--color-4));
     border-radius: 3rem;
     display: flex;
     flex-direction: column;
@@ -32,7 +30,7 @@ body{
 .player-pic{
     aspect-ratio: 1/1;
     margin-top: 5vh;
-    border: solid 0.15rem white;
+    border: solid 0.15rem var(--color-white);
     width: 80%;
     border-radius: 2rem;
 }
@@ -62,7 +60,7 @@ body{
     margin-top: 0.5rem;
 }
 .player-titles h2, .player-titles h4, h3{
-    color: white;
+    color: var(--color-white);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -95,7 +93,7 @@ button:hover{
     cursor: pointer;
 }
 input{
-    accent-color: white;
+    accent-color: var(--color-white);
 }
 input:hover{
     cursor: pointer;
@@ -118,7 +116,7 @@ input:hover{
 }
 .sound-volume{
     width: 3rem;
-    color: white;
+    color: var(--color-white);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
@@ -141,7 +139,7 @@ footer img{
     width: 1.5rem;
 }
 footer h4{
-    color: white;
+    color: var(--color-white);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
